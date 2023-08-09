@@ -11,6 +11,8 @@ const connect = () => {
   conn.on('connect', () => {
     console.log ('Successfully connected to game server');
     conn.write('Name: MOE');
+    
+    //conn.write('Move: up');
   })
   
   // interpret incoming data as text
