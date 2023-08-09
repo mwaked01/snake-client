@@ -1,4 +1,3 @@
-const { symlink } = require('fs');
 const net = require('net');
 
 // establishes a connection with the game server
@@ -9,11 +8,11 @@ const connect = () => {
   });
   
   conn.on('connect', () => {
-    console.log ('Successfully connected to game server');
+    console.log('Successfully connected to game server');
     conn.write('Name: MOE');
     
     //conn.write('Move: up');
-  })
+  });
   
   // interpret incoming data as text
   conn.setEncoding("utf8");
