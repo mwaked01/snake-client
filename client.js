@@ -1,3 +1,4 @@
+const { symlink } = require('fs');
 const net = require('net');
 
 // establishes a connection with the game server
@@ -7,6 +8,10 @@ const connect = () => {
     port: 50541,
   });
   
+  conn.on('connect', () => {
+    console.log ('Successfully connected to game server');
+    conn.write('Name: MOE');
+  })
   
   // interpret incoming data as text
   conn.setEncoding("utf8");
