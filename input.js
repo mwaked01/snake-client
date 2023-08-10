@@ -1,6 +1,4 @@
-//const { connect } = require("http2");
-
-let connection;
+let connection; //Global scoped to hold the object value of connect
 
 const setupInput = function(conn) {
   const stdin = process.stdin;
@@ -8,8 +6,7 @@ const setupInput = function(conn) {
   stdin.setRawMode(true);
   stdin.setEncoding("utf8");
   stdin.resume();
-  stdin.on("data", handleUserInput);
-  //console.log(connection);
+  stdin.on("data", handleUserInput); // read data from user input
   return stdin;
 };
 
@@ -17,7 +14,7 @@ const handleUserInput = function(key) {
   if (key === '\u0003') {
     process.exit();
   }
-  
+  //movement control
   if (key === 'w') {
     connection.write('Move: up');
   }
@@ -30,7 +27,7 @@ const handleUserInput = function(key) {
   if (key === 'd') {
     connection.write('Move: right');
   }
-  
+  //message display control
   if (key === 'f') {
     connection.write('Say: Uh-oh');
   }
